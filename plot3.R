@@ -47,12 +47,8 @@ leg.txt<-c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
                 col=c("black", "red", "blue"))
 
 ##Export/save as .png file with width of 480 pixels and a height of 480 pixels
-dev.copy(png,filename="plot3.png",
-        width=480, height=480, units="px")
-dev.off()
-
-
-
+       ##switched to png rather than dev because  it was cutting off the right side of legend
+png(filename="plot3.png", width=480, height=480, units="px")
 
 
 
