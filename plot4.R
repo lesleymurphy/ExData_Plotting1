@@ -36,7 +36,7 @@ data$DayOfWeek<-weekdays(data$DateTime)
 ##y-axis of global_reactive_power and both have xlab of "datetime"
 
 ##setup plotting area for tiles
-par(mfrow=c(2,2))
+plot4<-par(mfrow=c(2,2))
 
 ##upper left
 plot(data$DateTime, data$Global_active_power, type="l", xlab=" ", ylab="Global Active Power (kilowatts)")
