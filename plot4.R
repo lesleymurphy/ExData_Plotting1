@@ -35,24 +35,29 @@ data$DayOfWeek<-weekdays(data$DateTime)
 ##graphs on right side are the same as plot 2 except in upper right is voltage on y-axis and lower right is with
 ##y-axis of global_reactive_power and both have xlab of "datetime"
 
+##Export/save as .png file with width of 480 pixels and a height of 480 pixels
+##switched to png rather than dev because  it was cutting off the right side of legend
+png(filename="plot4.png", width=480, height=480, units="px")
+
 ##setup plotting area for tiles
-plot4<-par(mfrow=c(2,2))
+par(mfrow=c(2,2))
 
 ##upper left
-plot(data$DateTime, data$Global_active_power, type="l", xlab=" ", ylab="Global Active Power (kilowatts)")
+plot(data$DateTime, data$Global_active_power, type="l", xlab=" ", ylab="Global Active Power")
 
 ##upper right
 plot(data$DateTime, data$Voltage, type="l", xlab="datetime", ylab="Voltage")
 
 ##lower left
-plot3<-plot(data$DateTime, data$Sub_metering_1, col="black", type="l", xlab=" ", ylab="Energy sub metering")
+plot(data$DateTime, data$Sub_metering_1, col="black", type="l", xlab=" ", ylab="Energy sub metering")
 lines(data$DateTime, data$Sub_metering_2, col="red", type="l")
 lines(data$DateTime, data$Sub_metering_3, col="blue", type="l")
 
 leg.txt<-c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
 
 legend('topright',legend=leg.txt,
-       border="black",
+       cex=0.8,
+       bty="n",
        lty=c(1,1, 1),
        lwd=c(2.5,2.5),
        col=c("black", "red", "blue"))
@@ -60,6 +65,4 @@ legend('topright',legend=leg.txt,
 ##lower right
 plot(data$DateTime, data$Global_reactive_power, type="l", xlab="datetime", ylab="Global_reactive_power")
 
-##Export/save as .png file with width of 480 pixels and a height of 480 pixels
-##switched to png rather than dev because  it was cutting off the right side of legend
-png(filename="plot4.png", width=480, height=480, units="px")
+dev.off()
